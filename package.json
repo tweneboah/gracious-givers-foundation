@@ -1,0 +1,30 @@
+{
+  "name": "gracious-givers-foundations",
+  "version": "1.0.0",
+  "description": "Charity Organisation",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tweneboah/gracious-givers-foundations.git"
+  },
+  "keywords": [
+    "Charity",
+    "organisations"
+  ],
+  "author": "Emmanuel Tweneboah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tweneboah/gracious-givers-foundations/issues"
+  },
+  "homepage": "https://github.com/tweneboah/gracious-givers-foundations#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.3",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}
