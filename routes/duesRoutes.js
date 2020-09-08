@@ -5,19 +5,17 @@ const auth = require('../middlewares/auth');
 
 //Create Dues
 duesRoutes.post('/', async (req, res) => {
+  console.log(req.user);
   const dues = new Dues({
     amount: req.body.amount,
     description: req.body.description,
+    user: req.user.id,
   });
   await dues.save();
   res.send(dues);
 });
 
-duesRoutes.get('/', async (req, res) => {
-  console.log(req.user);
-  res.send(req.user);
-});
-
+// Delete
 duesRoutes.delete('/:duesId', async (req, res) => {
   try {
     const deleted = await Dues.findByIdAndDelete(req.params.duesId);
@@ -31,6 +29,7 @@ duesRoutes.delete('/:duesId', async (req, res) => {
   }
 });
 
+// Update
 duesRoutes.patch('/:id', async (req, res) => {
   const updates = Object.keys(req.body);
   const allowUpdates = ['amount', 'description'];
@@ -57,4 +56,13 @@ duesRoutes.patch('/:id', async (req, res) => {
   }
 });
 
+//Fetch all dues
+duesRoutes.get('/', async (req, res) => {
+  try {
+    const dues = await (await Dues.findOne().populate('user')).execPopulate();
+    res.send(dues);
+  } catch (error) {
+    res.status(501).send(error);
+  }
+});
 module.exports = duesRoutes;
