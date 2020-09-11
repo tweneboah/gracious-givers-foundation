@@ -2,27 +2,42 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { payDues } from '../../../redux/actions/dues/duesActions';
 
-const PayDuesForm = () => {
+const PayDuesForm = props => {
   const [title, setTitle] = useState('');
+  const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
   const dispatch = useDispatch();
 
   const onSubmitData = e => {
     e.preventDefault();
-    const data = { title, description };
+    const data = { title, description, amount };
     dispatch(payDues(data));
+    props.history.push('/dues');
   };
   return (
     <div>
       <form className='row g-3' onSubmit={onSubmitData}>
         <div className='col-auto'>
           <input
+            name='title'
             onChange={e => setTitle(e.target.value)}
             type='text'
             className='form-control'
             id='inputPassword2'
             placeholder='title'
             value={title}
+          />
+        </div>
+
+        <div className='col-auto'>
+          <input
+            name='amount'
+            onChange={e => setAmount(e.target.value)}
+            type='text'
+            className='form-control'
+            id='inputPassword2'
+            placeholder='Amount GHS'
+            value={amount}
           />
         </div>
         <div className='col-auto'>
@@ -33,6 +48,7 @@ const PayDuesForm = () => {
             onChange={e => setDescription(e.target.value)}
             value={description}
             type='text'
+            name='description'
             className='form-control'
             id='inputPassword2'
             placeholder='Description'

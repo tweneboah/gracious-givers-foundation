@@ -1,12 +1,13 @@
 const express = require('express');
 const duesRoutes = express.Router();
-const Dues = require('../models/DuesPayment');
+const Dues = require('../models/Dues');
 const auth = require('../middlewares/auth');
 
 //Create Dues
-duesRoutes.post('/', async (req, res) => {
+duesRoutes.post('/dues', async (req, res) => {
   console.log(req.user);
   const dues = new Dues({
+    title: req.body.title,
     amount: req.body.amount,
     description: req.body.description,
     user: req.user.id,
@@ -57,9 +58,9 @@ duesRoutes.patch('/:id', async (req, res) => {
 });
 
 //Fetch all dues
-duesRoutes.get('/', async (req, res) => {
+duesRoutes.get('/dues', async (req, res) => {
   try {
-    const dues = await (await Dues.findOne().populate('user')).execPopulate();
+    const dues = await Dues.find({}).populate('user').exec();
     res.send(dues);
   } catch (error) {
     res.status(501).send(error);

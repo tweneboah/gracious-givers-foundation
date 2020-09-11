@@ -32,9 +32,15 @@ const PrivateNavbar = ({ user }) => {
                 </Link>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='/auth/google'>
+                <Link className='nav-link' to='/profile'>
                   Profile
-                </a>
+                </Link>
+              </li>
+
+              <li className='nav-item'>
+                <Link className='nav-link' to='/dues'>
+                  All Dues
+                </Link>
               </li>
 
               <li className='nav-item'>

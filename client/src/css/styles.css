@@ -1,0 +1,29 @@
+body {
+  background-color: rgb(210, 194, 194);
+}
+
+.banner-height {
+  height: 80vh;
+}
+
+.b {
+  background-color: brown;
+  height: 80vh;
+}
+
+.banner-left {
+}
+
+.banner-height2 {
+  background-color: blueviolet;
+  background: url('https://cdn.pixabay.com/photo/2019/12/11/21/51/bali-4689382_1280.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg {
+  background-color: blueviolet;
+  background: url('https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

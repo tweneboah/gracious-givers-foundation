@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
-const DuesPayment = new mongoose.Schema(
+const DuesSchema = new mongoose.Schema(
   {
+    title: {
+      type: String,
+    },
     amount: {
       type: String,
     },
@@ -12,10 +15,14 @@ const DuesPayment = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = Dues = mongoose.model('Dues', DuesPayment);
+module.exports = Dues = mongoose.model('Dues', DuesSchema);
