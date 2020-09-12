@@ -3,12 +3,12 @@ body {
 }
 
 .banner-height {
-  height: 80vh;
+  height: 100vh;
 }
 
 .b {
   background-color: brown;
-  height: 80vh;
+  height: 100vh;
 }
 
 .banner-left {
@@ -21,9 +21,14 @@ body {
   background-size: cover;
 }
 
-.bg {
-  background-color: blueviolet;
-  background: url('https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg');
+.form_bg {
+  background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 76, 121, 0.36318277310924374) 35%,
+      rgba(75, 68, 4, 0.692) 100%
+    ),
+    url('https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }

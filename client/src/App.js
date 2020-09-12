@@ -11,9 +11,8 @@ import Landing from './components/Landing/Landing';
 function App() {
   return (
     <div>
+      <Navbar />
       <BrowserRouter>
-        <Navbar />
-
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route exact path='/dues' component={DuesList} />
