@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-const Duesitem = ({ duesDetails }) => {
-  console.log(duesDetails);
+const Duesitem = ({ duesDetails, user }) => {
   return (
     <div className='list-group'>
       <a href='/' className='list-group-item list-group-item-action'>
@@ -15,7 +14,7 @@ const Duesitem = ({ duesDetails }) => {
         <small className='text-muted'>GHS {duesDetails.amount}</small>
         <p>
           {' '}
-          <small className='text-muted'> {duesDetails.user.displayName}</small>
+          <small className='text-muted'> {user.displayName}</small>
         </p>
       </a>
     </div>

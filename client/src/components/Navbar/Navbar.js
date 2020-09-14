@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
-import PrivateNavbar from './Private/PrivateNavbar';
-import PublicNavbar from './Public/PublicNavbar';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from '../../redux/actions/users/usersActions';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -14,65 +13,64 @@ const Navbar = () => {
     return storeData.userAuth;
   });
 
-  console.log(userData.user ? userData.user.user : '');
-
   const renderAuthNav = () => {
-    if (userData.user) {
+    if (userData.currentUser.user) {
       return (
         <Fragment>
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
+          <li className='nav-item'>
+            <a className='nav-link' href='/'>
               Staff
             </a>
           </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/profile'>
               My Account
-            </a>
+            </Link>
           </li>
-
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
-              Members
-            </a>
-          </li>
+          {userData.currentUser.user.isAdmin && (
+            <li className='nav-item'>
+              <Link className='nav-link' to='/pay-dues'>
+                Pay Dues
+              </Link>
+            </li>
+          )}
         </Fragment>
       );
     } else return;
   };
 
   return (
-    <nav class='navbar navbar-expand-lg navbar-light bg-light pl-5'>
-      <a className='' class='navbar-brand' href='#'>
+    <nav className='navbar navbar-expand-lg navbar-dark bg-primary pl-5'>
+      <a className='navbar-brand' href='/'>
         GGF
       </a>
       <button
-        class='navbar-toggler'
+        className='navbar-toggler'
         type='button'
         data-toggle='collapse'
         data-target='#navbarSupportedContent'
         aria-controls='navbarSupportedContent'
         aria-expanded='false'
         aria-label='Toggle navigation'>
-        <span class='navbar-toggler-icon'></span>
+        <span className='navbar-toggler-icon'></span>
       </button>
 
-      <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-        <ul class='navbar-nav mr-auto'>
-          <li class='nav-item active'>
-            <a class='nav-link' href='#'>
-              Home <span class='sr-only'>(current)</span>
+      <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+        <ul className='navbar-nav mr-auto'>
+          <li className='nav-item active'>
+            <a className='nav-link' href='/'>
+              Home <span className='sr-only'>(current)</span>
             </a>
           </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
+          <li className='nav-item'>
+            <a className='nav-link' href='/'>
               Upcoming Event
             </a>
           </li>
-          <li class='nav-item dropdown'>
+          <li className='nav-item dropdown'>
             <a
-              class='nav-link dropdown-toggle'
-              href='#'
+              className='nav-link dropdown-toggle'
+              href='/'
               id='navbarDropdown'
               role='button'
               data-toggle='dropdown'
@@ -80,62 +78,70 @@ const Navbar = () => {
               aria-expanded='false'>
               About Us
             </a>
-            <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-              <a class='dropdown-item' href='#'>
+            <div className='dropdown-menu' aria-labelledby='navbarDropdown'>
+              <a className='dropdown-item' href='/'>
                 Mission
               </a>
-              <a class='dropdown-item' href='#'>
+              <a className='dropdown-item' href='/'>
                 Vision
               </a>
 
-              <a class='dropdown-item' href='#'>
+              <a className='dropdown-item' href='/'>
                 Message from the C.E.O
               </a>
             </div>
           </li>
 
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
-              Our Impacts
+          <Link to='/dues' className='nav-item'>
+            <a className='nav-link' href='/'>
+              Dues
             </a>
-          </li>
-
-          {/* <li class='nav-item'>
-            <a class='nav-link' href='#'>
-              Staff
-            </a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
-              My Account
-            </a>
-          </li>
-
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
-              Members
-            </a>
-          </li> */}
+          </Link>
           {renderAuthNav()}
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
+          <li className='nav-item'>
+            <a className='nav-link' href='/'>
               Upcoming Event
             </a>
           </li>
 
-          <li class='nav-item'>
-            <a class='nav-link' href='#'>
+          <li className='nav-item'>
+            <a className='nav-link' href='/'>
               Contact
             </a>
           </li>
         </ul>
 
-        <button class='btn btn-outline-success my-2 mr-5 my-sm-0' type='submit'>
-          Login
-        </button>
-        <button class='btn btn-outline-info my-2 mr-5 my-sm-0' type='submit'>
-          Register
-        </button>
+        {userData.currentUser.user ? (
+          <img
+            className='img-fluid my-2 mr-5 my-sm-0 avatar'
+            src={`${userData.currentUser.user.photo}`}
+            alt='avatar'
+          />
+        ) : (
+          ''
+        )}
+        {!userData.currentUser.user ? (
+          <Fragment>
+            <a href='/auth/google'>
+              <button
+                className='btn btn-outline-warning my-2 mr-5 my-sm-0'
+                type='submit'>
+                login with Google
+              </button>
+            </a>
+          </Fragment>
+        ) : (
+          <Fragment>
+            <a href='/api/logout'>
+              <button
+                className='btn btn-danger my-2 mr-5 my-sm-0'
+                type='submit'>
+                {' '}
+                logout{' '}
+              </button>
+            </a>
+          </Fragment>
+        )}
       </div>
     </nav>
   );

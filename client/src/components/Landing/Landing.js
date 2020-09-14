@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 
 const Landing = () => {
   return (
@@ -109,7 +109,7 @@ const Landing = () => {
                   </div>
                   <a
                     className='carousel-control-prev'
-                    href='#carouselExampleCaptions'
+                    href='/'
                     role='button'
                     data-slide='prev'>
                     <span
@@ -243,7 +243,7 @@ const Landing = () => {
             <img
               src='https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg'
               class='img-fluid '
-              alt='Responsive image'
+              alt='avatar'
             />
           </div>
           <div className='col-lg-5 align-self-center '>
@@ -259,7 +259,7 @@ const Landing = () => {
             <img
               src='https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg'
               class='img-fluid '
-              alt='Responsive image'
+              alt='avatar'
             />
           </div>
         </div>
@@ -273,7 +273,7 @@ const Landing = () => {
               <img
                 src='https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg'
                 class='card-img-top'
-                alt='...'
+                alt='avatar'
               />
               <div class='card-body'>
                 <h5 class='card-title'>Card title</h5>
@@ -281,7 +281,7 @@ const Landing = () => {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <a href='#' class='btn btn-primary'>
+                <a href='/' class='btn btn-primary'>
                   Go somewhere
                 </a>
               </div>
@@ -301,7 +301,7 @@ const Landing = () => {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <a href='#' class='btn btn-primary'>
+                <a href='/' class='btn btn-primary'>
                   Go somewhere
                 </a>
               </div>
@@ -313,7 +313,7 @@ const Landing = () => {
               <img
                 src='https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg'
                 class='card-img-top'
-                alt='...'
+                alt='avatar'
               />
               <div class='card-body'>
                 <h5 class='card-title'>Card title</h5>
@@ -321,7 +321,7 @@ const Landing = () => {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <a href='#' class='btn btn-primary'>
+                <a href='/' class='btn btn-primary'>
                   Go somewhere
                 </a>
               </div>
@@ -333,7 +333,7 @@ const Landing = () => {
               <img
                 src='https://cdn.pixabay.com/photo/2013/01/04/02/37/children-73476_1280.jpg'
                 class='card-img-top'
-                alt='...'
+                alt='avatar'
               />
               <div class='card-body'>
                 <h5 class='card-title'>Card title</h5>
@@ -341,7 +341,7 @@ const Landing = () => {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
-                <a href='#' class='btn btn-primary'>
+                <a href='/' class='btn btn-primary'>
                   Go somewhere
                 </a>
               </div>

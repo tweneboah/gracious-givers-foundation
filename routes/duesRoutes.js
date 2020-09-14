@@ -10,7 +10,7 @@ duesRoutes.post('/dues', async (req, res) => {
     title: req.body.title,
     amount: req.body.amount,
     description: req.body.description,
-    user: req.user.id,
+    user: req.body.user,
   });
   await dues.save();
   res.send(dues);

@@ -1,5 +1,6 @@
 const express = require('express');
 const auth = require('../middlewares/auth');
+const User = require('../models/User');
 
 const userRoutes = express.Router();
 
@@ -11,6 +12,16 @@ userRoutes.get('/profile', auth, async (req, res) => {
   console.log('User Dues', user.dues); //This will print out the dues paid by this user
   //Send the user and it's dues paid
   res.send({ userDues: user.dues, user: user });
+});
+
+//Fetch all users
+userRoutes.get('/users', async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.send(users);
+  } catch (error) {
+    res.status(501).send(error);
+  }
 });
 
 //logout

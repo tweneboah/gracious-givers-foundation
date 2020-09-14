@@ -10,16 +10,21 @@ const DuesList = () => {
     dispatch(fetchDues());
   }, [dispatch]);
   const duesData = useSelector(data => {
-    return data.dues;
+    return {
+      userDues: data.dues,
+      user: data.userAuth.currentUser,
+    };
   });
 
   return (
     <Fragment>
-      {duesData.length < 0 ? (
+      {duesData.userDues.length < 0 ? (
         <h1>Loading</h1>
       ) : (
-        duesData.map(due => {
-          return <Duesitem key={due._id} duesDetails={due} />;
+        duesData.userDues.map(due => {
+          return (
+            <Duesitem key={due._id} duesDetails={due} user={duesData.user} />
+          );
         })
       )}
     </Fragment>

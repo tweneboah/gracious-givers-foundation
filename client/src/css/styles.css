@@ -32,3 +32,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.login_page {
+  height: 90vh;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

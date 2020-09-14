@@ -1,10 +1,16 @@
-import { FETCH_CURRENT_USER } from '../../actions/actionTypes';
+import { FETCH_ALL_USERS, FETCH_CURRENT_USER } from '../../actions/actionTypes';
 
-const usersReducer = (state = {}, action) => {
+const usersReducer = (state = { currentUser: false, allUsers: [] }, action) => {
   switch (action.type) {
     case FETCH_CURRENT_USER:
       return {
-        user: action.payload,
+        ...state,
+        currentUser: action.payload,
+      };
+    case FETCH_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
       };
     default:
       return state;
