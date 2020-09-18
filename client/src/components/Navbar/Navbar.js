@@ -19,7 +19,7 @@ const Navbar = () => {
         <Fragment>
           <li className='nav-item'>
             <a className='nav-link' href='/'>
-              Staff
+              Members
             </a>
           </li>
           <li className='nav-item'>
@@ -57,52 +57,23 @@ const Navbar = () => {
 
       <div className='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul className='navbar-nav mr-auto'>
-          <li className='nav-item active'>
-            <a className='nav-link' href='/'>
-              Home <span className='sr-only'>(current)</span>
-            </a>
-          </li>
-          <li className='nav-item'>
-            <a className='nav-link' href='/'>
-              Upcoming Event
-            </a>
-          </li>
-          <li className='nav-item dropdown'>
-            <a
-              className='nav-link dropdown-toggle'
-              href='/'
-              id='navbarDropdown'
-              role='button'
-              data-toggle='dropdown'
-              aria-haspopup='true'
-              aria-expanded='false'>
-              About Us
-            </a>
-            <div className='dropdown-menu' aria-labelledby='navbarDropdown'>
-              <a className='dropdown-item' href='/'>
-                Mission
-              </a>
-              <a className='dropdown-item' href='/'>
-                Vision
-              </a>
-
-              <a className='dropdown-item' href='/'>
-                Message from the C.E.O
-              </a>
-            </div>
-          </li>
+          <li className='nav-item'></li>
 
           <Link to='/dues' className='nav-item'>
             <a className='nav-link' href='/'>
-              Dues
+              About Us
             </a>
           </Link>
+
+          <Link to='/gallery' className='nav-item'>
+            <a className='nav-link'>Gallery</a>
+          </Link>
+
+          <Link to='/members' className='nav-item'>
+            <a className='nav-link'>Members</a>
+          </Link>
+
           {renderAuthNav()}
-          <li className='nav-item'>
-            <a className='nav-link' href='/'>
-              Upcoming Event
-            </a>
-          </li>
 
           <li className='nav-item'>
             <a className='nav-link' href='/'>

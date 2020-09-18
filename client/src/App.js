@@ -10,6 +10,8 @@ import Landing from './components/Landing/Landing';
 import PrivateRoute from './components/PrivateRoute';
 import { useDispatch } from 'react-redux';
 import { fetchCurrentUser } from './redux/actions/users/usersActions';
+import Gallery from './components/Gallery/Gallery';
+import Members from './components/Members/Members';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,7 +27,9 @@ const App = () => {
         <Switch>
           <PrivateRoute exact path='/dues' component={DuesList} />
           <Route exact path='/pay-dues' component={PayDuesForm} />
-          <Route exact path='/profile' component={Profile} />
+          <Route exact path='/gallery' component={Gallery} />
+          <Route exact path='/members' component={Members} />
+          <PrivateRoute exact path='/profile' component={Profile} />
         </Switch>
       </BrowserRouter>
     </div>
