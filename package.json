@@ -4,7 +4,7 @@
   "description": "Charity Organisation",
   "main": "server.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "server": "nodemon app",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
