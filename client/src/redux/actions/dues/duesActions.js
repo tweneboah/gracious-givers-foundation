@@ -3,10 +3,9 @@ import { PAY_DUES, FETCH_DUES } from '../actionTypes';
 
 export const payDues = duesData => {
   return async dispatch => {
-    const res = await axios.post('/api/dues', duesData);
+    await axios.post('/api/dues', duesData);
     dispatch({
       type: PAY_DUES,
-      payload: res.data,
     });
   };
 };

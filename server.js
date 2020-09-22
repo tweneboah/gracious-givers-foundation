@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+const path = require('path');
 
 const app = express();
 //custom imports
@@ -41,6 +42,16 @@ app.get(
     res.redirect('/pay-dues');
   }
 );
+
+//Server statitic asset in production
+
+if (process.env.NODE_ENV === 'production') {
+  //set static folder
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 // Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -5,7 +5,8 @@ const auth = require('../middlewares/auth');
 
 //Create Dues
 duesRoutes.post('/dues', async (req, res) => {
-  console.log(req.user);
+  console.log('Req Body', req.body);
+
   const dues = new Dues({
     title: req.body.title,
     amount: req.body.amount,
