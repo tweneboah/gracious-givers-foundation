@@ -4,13 +4,26 @@ const cookieSession = require('cookie-session');
 const path = require('path');
 
 const app = express();
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb://127.0.0.1:27017/gracious-givers', {
+      useFindAndModify: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    });
+    console.log('DB Connected....😎');
+  } catch (error) {
+    console.log(error.message);
+    //exit process with failure
+  }
+};
+
 //custom imports
 require('./services/passport-config');
-require('./config/mongodbConnect')(); //IFFE
 const keys = require('./config/keys');
-const auth = require('./middlewares/auth');
 const duesPaymentRoutes = require('./routes/duesRoutes');
-const User = require('./models/User');
 const userRoutes = require('./routes/usersRoutes');
 //COOKIES
 app.use(
