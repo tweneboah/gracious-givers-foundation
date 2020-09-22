@@ -7,7 +7,7 @@ const app = express();
 //custom imports
 require('./services/passport-config');
 require('./config/mongodbConnect')(); //IFFE
-const keys = require('./config/myKeys');
+const keys = require('./config/keys');
 const auth = require('./middlewares/auth');
 const duesPaymentRoutes = require('./routes/duesRoutes');
 const User = require('./models/User');
