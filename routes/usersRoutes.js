@@ -15,7 +15,7 @@ userRoutes.get('/profile', auth, async (req, res) => {
 });
 
 //Fetch all users
-userRoutes.get('/users', async (req, res) => {
+userRoutes.get('/users', auth, async (req, res) => {
   try {
     const users = await User.find({});
     res.send(users);

@@ -1,6 +1,8 @@
 const express = require('express');
 const passport = require('passport');
-const cookieSession = require('cookie-session');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
@@ -19,42 +21,35 @@ const connectDB = async () => {
     //exit process with failure
   }
 };
+connectDB();
 
 //custom imports
-require('./services/passport-config');
+require('./config/passport-config')();
 const keys = require('./config/keys');
 const duesPaymentRoutes = require('./routes/duesRoutes');
 const userRoutes = require('./routes/usersRoutes');
+const authRoutes = require('./routes/authRoutes');
 //COOKIES
-app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKeys],
-  })
-);
 
 //middlewares
-app.use(passport.initialize());
-app.use(passport.session());
+//Middleware
 app.use(express.json());
-//Routes
-app.use('/api', duesPaymentRoutes);
-app.use('/api', userRoutes);
-// Auth start
-app.get(
-  '/auth/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'email'],
+app.use(
+  session({
+    secret: 'Node js',
+    resave: true,
+    saveUninitialized: true,
   })
 );
+app.use(cookieParser('Node js'));
 
-app.get(
-  '/auth/google/callback',
-  passport.authenticate('google'),
-  (req, res) => {
-    res.redirect('/pay-dues');
-  }
-);
+//Initialise passport
+app.use(passport.initialize());
+
+//Routes
+app.use('/api', authRoutes);
+app.use('/api', duesPaymentRoutes);
+app.use('/api', userRoutes);
 
 //Server statitic asset in production
 

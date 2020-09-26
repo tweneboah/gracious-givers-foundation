@@ -1,6 +1,6 @@
 const auth = (req, res, next) => {
   if (!req.user) {
-    return;
+    return res.send('Logi first');
   } else {
     next();
   }
