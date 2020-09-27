@@ -1,6 +1,6 @@
 const auth = (req, res, next) => {
   if (!req.user) {
-    return res.send('Logi first');
+    return res.status(201).json({ msg: 'Permission denied, Login first' });
   } else {
     next();
   }

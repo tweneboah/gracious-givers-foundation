@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import Footer from '../Footer/Footer';
 import ggf2 from '../../img/ggf2.jpg';
 import ggf3 from '../../img/ggf3.jpg';
-import ggf4 from '../../img/ggf4.jpg';
 import ggf5 from '../../img/ggf5.jpg';
-import ggf6 from '../../img/ggf5.jpg';
 import ceo from '../../img/ceo.jpg';
+
 const Landing = () => {
   return (
     <Fragment>
@@ -40,7 +39,7 @@ const Landing = () => {
                   <div className=' inline-block mt-5'>
                     <button
                       type='button'
-                      class='btn btn-primary'
+                      className='btn btn-primary'
                       data-toggle='modal'
                       data-target='#registerToggler'
                       data-whatever='@mdo'>
@@ -91,7 +90,7 @@ const Landing = () => {
                       </div>
                     </div>
                     <div className='carousel-item'>
-                      <img src={ggf5} className='d-block w-100' alt='...' />
+                      <img src={ggf5} className='d-block w-100' alt='ceo' />
                       <div className='carousel-caption d-none d-md-block'>
                         <h5>Third slide label</h5>
                         <p>
@@ -119,7 +118,7 @@ const Landing = () => {
                     <span
                       className='carousel-control-next-icon'
                       aria-hidden='true'></span>
-                    <span class='sr-only'>Next</span>
+                    <span className='sr-only'>Next</span>
                   </a>
                 </div>
               </div>
@@ -132,7 +131,11 @@ const Landing = () => {
       <div className='container-fluid'>
         <div className='row mt-5 mb-5 justify-content-center align-items-center text-center'>
           <div className='col-md-6 col-lg-4'>
-            <img src={ceo} className='img-fluid img-thumbnail ceo-img' />
+            <img
+              src={ceo}
+              className='img-fluid img-thumbnail ceo-img'
+              alt='company'
+            />
           </div>
 
           <div className='col-md-6'>
@@ -173,7 +176,7 @@ const Landing = () => {
           </div>
 
           <div className='col-lg-6'>
-            <img src={ggf2} className='img-fluid img-thumbnail' />
+            <img src={ggf2} className='img-fluid img-thumbnail' alt='ceo' />
           </div>
         </div>
         {/* Upcoming Donation */}
@@ -182,7 +185,7 @@ const Landing = () => {
       <div className='container-fluid mt-5 '>
         <div className='row text-center justify-content-center align-items-center'>
           <div className='col-md-6'>
-            <img src={ggf2} className='img-fluid' />
+            <img src={ggf2} className='img-fluid' alt='company' />
           </div>
           <div className='col-md-6'>
             <h1>Upcoming Donation</h1>
@@ -203,10 +206,10 @@ const Landing = () => {
         <h1 className='text-center'>Our Recent Donations</h1>
         <div className='row'>
           <div className='col-lg-4'>
-            <div class='card'>
-              <img src={ggf2} class='card-img-top' alt='donation' />
-              <div class='card-body'>
-                <p class='card-text'>
+            <div className='card'>
+              <img src={ggf2} className='card-img-top' alt='donation' />
+              <div className='card-body'>
+                <p className='card-text'>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
@@ -215,10 +218,10 @@ const Landing = () => {
           </div>
 
           <div className='col-lg-4'>
-            <div class='card'>
-              <img src={ggf2} class='card-img-top' alt='donation' />
-              <div class='card-body'>
-                <p class='card-text'>
+            <div className='card'>
+              <img src={ggf2} className='card-img-top' alt='donation' />
+              <div className='card-body'>
+                <p className='card-text'>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>
@@ -227,10 +230,10 @@ const Landing = () => {
           </div>
 
           <div className='col-lg-4'>
-            <div class='card'>
-              <img src={ggf2} class='card-img-top' alt='donation' />
-              <div class='card-body'>
-                <p class='card-text'>
+            <div className='card'>
+              <img src={ggf2} className='card-img-top' alt='donation' />
+              <div className='card-body'>
+                <p className='card-text'>
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p>

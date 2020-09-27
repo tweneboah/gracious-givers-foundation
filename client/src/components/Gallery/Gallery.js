@@ -10,7 +10,6 @@ import img6 from '../../img/ggf7.jpg';
 import img7 from '../../img/ggf11.jpg';
 import img8 from '../../img/ggf9.jpg';
 import img9 from '../../img/ggf4.jpg';
-import { Link } from 'react-router-dom';
 const PHOTOS = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
 
 const Gallery = () => {

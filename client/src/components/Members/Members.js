@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import Moment from 'react-moment';
 
 import { fetchAllUsers } from '../../redux/actions/users/usersActions';
-import ceo from '../../img/ceo.jpg';
 const Members = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,6 +33,7 @@ const Members = () => {
                   <tr key={user._id} className='text-center'>
                     <th scope='row'>
                       <img
+                        alt='ggf'
                         src={user.photo}
                         className='members-avatr img-thumbnail'
                       />

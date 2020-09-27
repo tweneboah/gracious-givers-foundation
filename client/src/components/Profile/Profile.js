@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCurrentUser } from '../../redux/actions/users/usersActions';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Profile = props => {
   // const dispatch = useDispatch();
   const user = useSelector(store => {
-    return store.userAuth;
+    return store.users;
   });
   const renderTable = () => {
     return user.currentUser && user.currentUser.userDues.length > 0
@@ -20,12 +19,6 @@ const Profile = props => {
         })
       : '';
   };
-
-  // useEffect(() => {
-  //   dispatch(fetchCurrentUser());
-  // }, [dispatch]);
-
-  //Check if user has no any donation paid
 
   return (
     <div>
@@ -42,7 +35,7 @@ const Profile = props => {
                   With supporting text below as a natural lead-in to additional
                   content.
                 </p>
-                <a href='#' class='btn btn-primary'>
+                <a href='/' class='btn btn-primary'>
                   Go somewhere
                 </a>
               </div>
@@ -98,7 +91,7 @@ const Profile = props => {
                   With supporting text below as a natural lead-in to additional
                   content.
                 </p>
-                <a href='#' class='btn btn-primary'>
+                <a href='/' class='btn btn-primary'>
                   Go somewhere
                 </a>
               </div>

@@ -4,6 +4,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const duesPaymentRoutes = require('./routes/duesRoutes');
+const userRoutes = require('./routes/usersRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 
@@ -23,29 +26,23 @@ const connectDB = async () => {
 };
 connectDB();
 
-//custom imports
-require('./config/passport-config')();
-const keys = require('./config/keys');
-const duesPaymentRoutes = require('./routes/duesRoutes');
-const userRoutes = require('./routes/usersRoutes');
-const authRoutes = require('./routes/authRoutes');
-//COOKIES
-
-//middlewares
 //Middleware
 app.use(express.json());
 app.use(
   session({
-    secret: 'Node js',
+    secret: 'Nodejs',
     resave: true,
     saveUninitialized: true,
   })
 );
-app.use(cookieParser('Node js'));
+app.use(cookieParser('Nodejs'));
 
 //Initialise passport
-app.use(passport.initialize());
 
+app.use(passport.initialize());
+app.use(passport.session());
+//custom imports
+require('./config/passport-config')(passport);
 //Routes
 app.use('/api', authRoutes);
 app.use('/api', duesPaymentRoutes);

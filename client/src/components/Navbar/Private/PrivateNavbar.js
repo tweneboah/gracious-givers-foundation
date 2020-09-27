@@ -1,61 +1,62 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logoutUser } from '../../../redux/actions/users/usersActions';
 
 const PrivateNavbar = ({ user }) => {
+  const dispatch = useDispatch();
   return (
-    <Fragment>
-      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-        <div className='container-fluid'>
-          <a className='navbar-brand' href='/'>
-            GGF
-          </a>
+    <nav className='navbar navbar-expand-lg navbar-danger bg-danger'>
+      <a className='navbar-brand' href='/'>
+        GGF
+      </a>
+      <button
+        className='navbar-toggler'
+        type='button'
+        data-toggle='collapse'
+        data-target='#navbarSupportedContent'
+        aria-controls='navbarSupportedContent'
+        aria-expanded='false'
+        aria-label='Toggle navigation'>
+        <span className='navbar-toggler-icon'></span>
+      </button>
+
+      <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+        <ul className='navbar-nav mr-auto'>
+          <li className='nav-item'>
+            <a className='nav-link' href='/'>
+              About
+            </a>
+          </li>
+
+          <li className='nav-item'>
+            <a className='nav-link' href='/'>
+              Volunteers
+            </a>
+          </li>
+
+          <li className='nav-item'>
+            <Link className='nav-link' to='/profile'>
+              My Account
+            </Link>
+          </li>
+        </ul>
+        <form className='form-inline my-2 my-lg-0'>
           <button
-            className='navbar-toggler'
-            type='button'
-            data-toggle='collapse'
-            data-target='#navbarNav'
-            aria-controls='navbarNav'
-            aria-expanded='false'
-            aria-label='Toggle navigation'>
-            <span className='navbar-toggler-icon'></span>
+            className='btn btn-outline-success my-2 my-sm-0 mr-3'
+            type='submit'>
+            Search
           </button>
-          <div className='collapse navbar-collapse' id='navbarNav'>
-            <ul className='navbar-nav'>
-              <li className='nav-item'>
-                <a className='nav-link active' aria-current='page' href='/'>
-                  Home
-                </a>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/pay-dues'>
-                  Pay Dues
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link className='nav-link' to='/profile'>
-                  Profile
-                </Link>
-              </li>
 
-              <li className='nav-item'>
-                <Link className='nav-link' to='/dues'>
-                  All Dues
-                </Link>
-              </li>
-
-              <li className='nav-item'>
-                <a className='nav-link' href='/api/logout'>
-                  Logout
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <form className='d-flex'>
-          <p className='pr-3 text-warning'>{user ? user.email : ''}</p>
+          <button
+            onClick={() => dispatch(logoutUser())}
+            className='btn btn-outline-success my-2 my-sm-0 mr-4'
+            type='submit'>
+            Logout
+          </button>
         </form>
-      </nav>
-    </Fragment>
+      </div>
+    </nav>
   );
 };
 

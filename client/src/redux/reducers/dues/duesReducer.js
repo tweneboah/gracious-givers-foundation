@@ -4,7 +4,6 @@ const duesReducer = (state = [], action) => {
     case FETCH_DUES:
       return action.payload;
     case PAY_DUES:
-    case FETCH_DUES:
       return state;
     default:
       return state;
