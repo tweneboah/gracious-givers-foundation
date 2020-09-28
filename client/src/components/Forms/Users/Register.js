@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../redux/actions/users/usersActions';
 
-const Register = () => {
+const Register = props => {
+  console.log('register props', props);
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
 

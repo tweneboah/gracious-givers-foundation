@@ -1,5 +1,6 @@
 const express = require('express');
 const auth = require('../middlewares/auth');
+const Dues = require('../models/Dues');
 const User = require('../models/User');
 
 const userRoutes = express.Router();
@@ -22,5 +23,16 @@ userRoutes.get('/users', async (req, res) => {
     res.status(501).send(error);
   }
 });
+
+// userRoutes.get('/my-dues', async (req, res) => {
+//   try {
+//     //Find all dues by user
+//     const dues = await Dues.find({ user: req.user._id });
+//     console.log(dues);
+//     res.send(dues);
+//   } catch (error) {
+//     res.send(error);
+//   }
+// });
 
 module.exports = userRoutes;

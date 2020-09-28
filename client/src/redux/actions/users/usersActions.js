@@ -4,6 +4,7 @@ import {
   REGISTER_USER,
   LOGIN_USER,
   LOGOUT_USER,
+  USER_PROFILE,
 } from '../actionTypes';
 import axios from 'axios';
 
@@ -42,6 +43,16 @@ export const loiginUser = formData => {
     const res = await axios.post('/api/login', formData);
     dispatch({
       type: LOGIN_USER,
+      payload: res.data,
+    });
+  };
+};
+
+export const getProfile = () => {
+  return async dispatch => {
+    const res = await axios('/api/profile');
+    dispatch({
+      type: USER_PROFILE,
       payload: res.data,
     });
   };

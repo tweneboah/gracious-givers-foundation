@@ -34,6 +34,8 @@ const App = () => {
           <Route exact path='/register' component={Register} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/profile' component={Profile} />
+          <Route exact path='/users' component={Members} />
+          <Route exact path='/pay-dues' component={PayDuesForm} />
         </Switch>
       </BrowserRouter>
     </div>

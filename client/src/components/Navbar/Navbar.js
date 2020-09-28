@@ -1,7 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from '../../redux/actions/users/usersActions';
-import { Link } from 'react-router-dom';
 import PrivateNavbar from './Private/PrivateNavbar';
 import PublicNavbar from './Public/PublicNavbar';
 
@@ -12,14 +11,16 @@ const Navbar = () => {
   }, [dispatch]);
 
   const userData = useSelector(store => {
-    return store.users;
+    return store.auth;
   });
-
-  console.log(userData.currentUser);
 
   return (
     <Fragment>
-      {userData && userData.currentUser ? <PrivateNavbar /> : <PublicNavbar />}
+      {userData && userData.isAuthenticated.user ? (
+        <PrivateNavbar userData={userData} />
+      ) : (
+        <PublicNavbar />
+      )}
     </Fragment>
   );
 };

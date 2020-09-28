@@ -1,30 +1,25 @@
-import {
-  FETCH_ALL_USERS,
-  FETCH_CURRENT_USER,
-  REGISTER_USER,
-  LOGOUT_USER,
-  LOGIN_USER,
-} from '../../actions/actionTypes';
+const { FETCH_ALL_USERS, USER_PROFILE } = require('../../actions/actionTypes');
 
-const usersReducer = (state = { currentUser: false, allUsers: [] }, action) => {
+const userData = {
+  users: [],
+  profile: {},
+};
+
+const userReducer = (state = userData, action) => {
   switch (action.type) {
-    case LOGIN_USER:
-    case REGISTER_USER:
-    case FETCH_CURRENT_USER:
-      return {
-        ...state,
-        currentUser: action.payload,
-      };
     case FETCH_ALL_USERS:
       return {
         ...state,
-        allUsers: action.payload,
+        users: action.payload,
       };
-    case LOGOUT_USER:
-      return { ...state, currentUser: false };
+    case USER_PROFILE:
+      return {
+        ...state,
+        profile: action.payload,
+      };
     default:
       return state;
   }
 };
 
-export default usersReducer;
+export default userReducer;

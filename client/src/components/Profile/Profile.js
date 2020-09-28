@@ -1,19 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProfile } from '../../redux/actions/users/usersActions';
 
 const Profile = props => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfile());
+  }, [dispatch]);
   const user = useSelector(store => {
     return store.users;
   });
+  console.log(user.profile.userDues);
   const renderTable = () => {
-    return user.currentUser && user.currentUser.userDues.length > 0
-      ? user.currentUser.userDues.map(userdue => {
+    return user.profile.userDues && user.profile.userDues.length > 0
+      ? user.profile.userDues.map(userdue => {
           return (
             <tr>
               <td>{userdue.title}</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <td>{userdue.description}</td>
+              <td>{userdue.amount}</td>
             </tr>
           );
         })
@@ -27,85 +32,28 @@ const Profile = props => {
       <div className='container'>
         <div className='row'>
           <div className='col'>
-            <div class='card text-center'>
-              <div class='card-header'>Featured</div>
-              <div class='card-body'>
-                <h5 class='card-title'>Special title treatment</h5>
-                <p class='card-text'>
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href='/' class='btn btn-primary'>
-                  Go somewhere
-                </a>
+            <div className='card text-center'>
+              <div className='card-header'>
+                {user.profile.user && user.profile.user.username}
               </div>
-              <div class='card-footer text-muted'>2 days ago</div>
+              <div className='card-body'>
+                <h5 className='card-title'>{`Welcome ${
+                  user.profile.user && user.profile.user.username
+                } to your dashboard`}</h5>
+                <p className='card-text'>Total Donations made so far</p>
+                <h1 className='btn btn-primary'>Go somewhere</h1>
+              </div>
+              <div className='card-footer text-muted bg-danger'>2 days ago</div>
             </div>
           </div>
         </div>
       </div>
       {/* End of details */}
 
-      {/* Total donations */}
-
-      <div className='container'>
-        <div className='row'>
-          <div className='col'>
-            <div className='card'>
-              <div className='card-header'>Featured</div>
-              <div className='card-body'>
-                <h5 className='card-title'>Special title treatment</h5>
-                <p className='card-text'>
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href='/' class='btn btn-primary'>
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className='col'>
-            <div className='card'>
-              <div className='card-header'>Featured</div>
-              <div className='card-body'>
-                <h5 className='card-title'>Special title treatment</h5>
-                <p className='card-text'>
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href='/' class='btn btn-primary'>
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className='col'>
-            <div class='card  bg-success text-center'>
-              <div class='card-header'>Featured</div>
-              <div class='card-body  bg-info'>
-                <h5 class='card-title mb-3'>Special title treatment</h5>
-                <p class='card-text'>
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <a href='/' class='btn btn-primary'>
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* End Total donations */}
-
       {user.currentUser && user.currentUser.userDues.length <= 0 ? (
         <h1 className='text-center text-danger'>You have no dues paid yet</h1>
       ) : (
-        <table class='table  table-dark table-striped'>
+        <table className='table  table-dark table-striped'>
           <thead>
             <tr>
               <th scope='col'>Donation Type</th>

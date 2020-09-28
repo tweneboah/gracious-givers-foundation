@@ -6,14 +6,16 @@ import { payDues } from '../../../redux/actions/dues/duesActions';
 import { fetchAllUsers } from '../../../redux/actions/users/usersActions';
 
 const PayDuesForm = props => {
-  const store = useSelector(data => {
-    return data.userAuth;
+  const users = useSelector(store => {
+    return store.users.users;
   });
+  //We only need the id for value and username for lable to be able to use reactSelect
   const onlyOptions =
-    store.allUsers &&
-    store.allUsers.map(user => {
-      return { value: user._id, label: user.displayName };
+    users &&
+    users.map(user => {
+      return { value: user._id, label: user.username };
     });
+
   const [selectedOption, setSelectedOption] = useState(null);
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
@@ -33,7 +35,6 @@ const PayDuesForm = props => {
       user: selectedOption.value,
     };
     dispatch(payDues(data));
-    props.history.push('/dues');
   };
 
   return (
@@ -48,9 +49,9 @@ const PayDuesForm = props => {
               <select
                 name='title'
                 onChange={e => setTitle(e.target.value)}
-                class='form-select form-select-lg mb-3'
+                className='form-select form-select-lg mb-3'
                 aria-label='.form-select-lg example'>
-                <option selected>Donation Type</option>
+                <option defaultValue>Donation Type</option>
                 <option value='montly-dues'>Monthly Dues</option>
                 <option value='free-donations'>Free Donations</option>
                 <option value='others'>Others</option>

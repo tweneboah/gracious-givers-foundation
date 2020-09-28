@@ -8,7 +8,7 @@ const authRoutes = express.Router();
 authRoutes.post('/register', (req, res) => {
   User.findOne({ username: req.body.username }, async (err, user) => {
     if (err) throw err;
-    if (user) res.send('User Exist');
+    if (user) return; //Return some alert
     if (!user) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const newUser = new User({
@@ -16,7 +16,8 @@ authRoutes.post('/register', (req, res) => {
         password: hashedPassword,
       });
       await newUser.save();
-      res.status(200).json({ user: newUser });
+      res.redirect('/login');
+      //res.status(200).json({ user: newUser, success: true });
     }
   });
 });
@@ -24,11 +25,11 @@ authRoutes.post('/register', (req, res) => {
 authRoutes.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send({ msg: 'Invalid username/password' });
+    if (!user) res.send({ msg: 'Invalid username/password', success: false });
     else {
       req.logIn(user, err => {
         if (err) throw err;
-        res.status(200).json({ user });
+        res.status(200).json({ user: user, success: true });
       });
     }
   })(req, res, next);
@@ -40,7 +41,7 @@ authRoutes.post('/logout', (req, res) => {
 });
 
 authRoutes.get('/current-user', (req, res) => {
-  res.send(req.user);
+  res.status(200).json({ user: req.user });
 });
 
 module.exports = authRoutes;

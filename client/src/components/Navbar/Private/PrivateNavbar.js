@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../../redux/actions/users/usersActions';
 
-const PrivateNavbar = ({ user }) => {
+const PrivateNavbar = ({ userData }) => {
   const dispatch = useDispatch();
   return (
-    <nav className='navbar navbar-expand-lg navbar-danger bg-danger'>
+    <nav className='navbar navbar-expand-lg navbar-danger bg-white'>
       <a className='navbar-brand' href='/'>
         GGF
       </a>
@@ -30,9 +30,15 @@ const PrivateNavbar = ({ user }) => {
           </li>
 
           <li className='nav-item'>
-            <a className='nav-link' href='/'>
+            <Link className='nav-link' to='/members'>
               Volunteers
-            </a>
+            </Link>
+          </li>
+
+          <li className='nav-item'>
+            <Link className='nav-link' to='/pay-dues'>
+              Pay Dues
+            </Link>
           </li>
 
           <li className='nav-item'>
@@ -45,7 +51,9 @@ const PrivateNavbar = ({ user }) => {
           <button
             className='btn btn-outline-success my-2 my-sm-0 mr-3'
             type='submit'>
-            Search
+            {`Welcome ${
+              userData.isAuthenticated && userData.isAuthenticated.user.username
+            }`}
           </button>
 
           <button

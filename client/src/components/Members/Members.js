@@ -10,43 +10,35 @@ const Members = () => {
   }, [dispatch]);
 
   const users = useSelector(store => {
-    return store.userAuth.allUsers;
+    return store.users;
   });
 
-  console.log(users);
+  console.log(users.users);
   return (
     <div className='mt-5'>
-      <h1 className='text-center'>All Members - {users.length}</h1>
-      <table class='table'>
-        <thead class='thead-dark'>
+      <h1 className='text-center'>All Members - {users.users.length}</h1>
+      <table className='table'>
+        <thead className='thead-dark'>
           <tr className='text-center'>
-            <th scope='col'></th>
             <th scope='col'>Name</th>
             <th scope='col'>Email</th>
             <th scope='col'>Date Joined</th>
           </tr>
         </thead>
         <tbody>
-          {users && users.length > 0
-            ? users.map(user => {
+          {users && users.users.length > 0
+            ? users.users.map(user => {
                 return (
                   <tr key={user._id} className='text-center'>
-                    <th scope='row'>
-                      <img
-                        alt='ggf'
-                        src={user.photo}
-                        className='members-avatr img-thumbnail'
-                      />
-                    </th>
-                    <td>{user.displayName}</td>
-                    <td>{user.email}</td>
+                    <td>{user.username}</td>
+                    <td>Email here</td>
                     <td>
                       <Moment fromNow>{user.createdAt}</Moment>
                     </td>
                   </tr>
                 );
               })
-            : ''}
+            : 'j'}
         </tbody>
       </table>
     </div>
