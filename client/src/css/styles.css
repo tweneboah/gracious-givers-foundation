@@ -46,8 +46,15 @@ body {
   background-size: cover;
 }
 
-.login_page {
+.login_container {
   height: 90vh;
+  background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 76, 121, 0.36318277310924374) 35%,
+      rgba(75, 68, 4, 0.692) 100%
+    ),
+    url('../img/ggf8.jpg');
 }
 
 .avatar {

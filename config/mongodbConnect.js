@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const keys = require('./keys');
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(keys.mongoURI, {
+    await mongoose.connect(process.env.MONOGO_URL_LOCAL, {
       useFindAndModify: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -15,5 +14,4 @@ const connectDB = async () => {
     //exit process with failure
   }
 };
-
 module.exports = connectDB;

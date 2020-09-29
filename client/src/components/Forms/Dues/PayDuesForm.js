@@ -38,19 +38,19 @@ const PayDuesForm = props => {
   };
 
   return (
-    <div className=' container-fluid  bg-warning'>
+    <div className='container-fluid'>
       <div className='row justify-content-center align-items-center vh-100'>
         <div className='col-lg-5 '>
           <div>
-            <h2 className='text-center mb-4'>Dues Payment</h2>
+            <h2 className='text-center mb-4'>Pay Dues to User Account</h2>
           </div>
           <form onSubmit={onSubmitData}>
             <div>
               <select
                 name='title'
                 onChange={e => setTitle(e.target.value)}
-                className='form-select form-select-lg mb-3'
-                aria-label='.form-select-lg example'>
+                className='form-control  mb-3'
+                aria-label='.form-select-lg '>
                 <option defaultValue>Donation Type</option>
                 <option value='montly-dues'>Monthly Dues</option>
                 <option value='free-donations'>Free Donations</option>
@@ -65,7 +65,6 @@ const PayDuesForm = props => {
                 options={onlyOptions}
                 name='user'
                 value={selectedOption}
-                className=' form-control'
                 placeholder='Select member/payee'
               />
             </div>

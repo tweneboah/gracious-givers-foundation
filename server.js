@@ -1,31 +1,15 @@
 require('dotenv').config();
 const express = require('express');
+require('./config/mongodbConnect')(); //calling DB
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
 const path = require('path');
 const duesPaymentRoutes = require('./routes/duesRoutes');
 const userRoutes = require('./routes/usersRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
-console.log(process.env.MY_PORT);
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONOGO_URL_LOCAL, {
-      useFindAndModify: true,
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    });
-    console.log('DB Connected....😎');
-  } catch (error) {
-    console.log(error.message);
-    //exit process with failure
-  }
-};
-connectDB();
 
 //Middleware
 app.use(express.json());
@@ -59,7 +43,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 // Server
-const PORT = process.env.MY_PORT || 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is runing on port ${PORT}...😀`);
 });
